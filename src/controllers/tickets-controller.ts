@@ -21,3 +21,14 @@ export async function getTickets(req: AuthenticatedRequest, res: Response) {
     return res.sendStatus(httpStatus.NOT_FOUND);
   }
 }
+
+export async function addTickets(req: AuthenticatedRequest, res: Response) {
+  const { ticketTypeId } = req.body;
+  const { userId } = req;
+  try {
+    const result = await ticketsServices.addTickets(ticketTypeId, userId);
+    return res.status(httpStatus.CREATED).send(result);
+  } catch (error) {
+    return res.sendStatus(httpStatus.NOT_FOUND);
+  }
+}
