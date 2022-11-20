@@ -47,3 +47,14 @@ export type TicketAndType = {
     createdAt: Date,
     updatedAt: Date,
 }
+
+export type newPayment = {
+  ticketId: number,
+  cardData: {
+    issuer: string,
+    number: number,
+    name: string,
+    expirationDate: Date,
+    cvv: number
+  }
+}
